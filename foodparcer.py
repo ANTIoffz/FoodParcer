@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from versionChecker import checkVersion
 
-VERSION = '1.2'
-print(f'Версия {VERSION}')
-
-url = "http://health-diet.ru/table_calorie/?utm_source=leftMenu&utm_medium=table_calorie    "
+url = "http://health-diet.ru/table_calorie/?utm_source=leftMenu&utm_medium=table_calorie"
 
 headers = {
     "Accept": "*/*",
