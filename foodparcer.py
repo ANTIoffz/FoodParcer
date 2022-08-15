@@ -57,6 +57,7 @@ while True:
                 fats = table_cell[3].text.strip()
                 carb = table_cell[4].text.strip()
                 structure = item.find("a").get("href")
+                
             except Exception as exp:
                 print(f"error \n{exp}")
 
