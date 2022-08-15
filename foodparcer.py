@@ -4,9 +4,9 @@ import os
 
 url = "http://health-diet.ru/table_calorie/?utm_source=leftMenu&utm_medium=table_calorie    "
 
-headers={
-    "Accept":"*/*",
-    "User-Agent":"Mozilla/5.0(iPad;CPU OS 110like Mac OSX)AppleWebKit/604.1.34(KHTML,like Gecko)Version/11.0 Mobile/15A5341f Safari/604.1"
+headers = {
+    "Accept": "*/*",
+    "User-Agent": "Mozilla/5.0(iPad;CPU OS 110like Mac OSX)AppleWebKit/604.1.34(KHTML,like Gecko)Version/11.0 Mobile/15A5341f Safari/604.1"
 }
 req = requests.get(url, headers=headers)
 src = req.text
@@ -24,24 +24,24 @@ for item in all_products:
 
 while True:
     for item in all_names:
-        print(item, end = ", ")
+        print(item, end=", ")
 
     factory_name = input("\n\nName - ")
 
     url = all_categories_dist[factory_name]
     print(url)
 
-
-    headers={
-    "Accept":"*/*",
-    "User-Agent":"Mozilla/5.0(iPad;CPU OS 110like Mac OSX)AppleWebKit/604.1.34(KHTML,like Gecko)Version/11.0 Mobile/15A5341f Safari/604.1"
-}
+    headers = {
+        "Accept": "*/*",
+        "User-Agent": "Mozilla/5.0(iPad;CPU OS 110like Mac OSX)AppleWebKit/604.1.34(KHTML,like Gecko)Version/11.0 Mobile/15A5341f Safari/604.1"
+    }
 
     req = requests.get(url, headers=headers)
     src = req.text
     soup = BeautifulSoup(src, "lxml")
 
-    all_information = soup.find(class_="uk-overflow-container").find("tbody").find_all("tr")
+    all_information = soup.find(
+        class_="uk-overflow-container").find("tbody").find_all("tr")
     filename = (f"{factory_name}.txt")
 
     if " " in filename:
@@ -60,9 +60,10 @@ while True:
             except Exception as exp:
                 print(f"error \n{exp}")
 
-            info = (f"\n{product_name} - http:/health-diet.ru{structure} \n{cal} \n{squirrels} Белки \n{fats} Жиры \n{carb} Углеводы\n")
+            info = (
+                f"\n{product_name} - http:/health-diet.ru{structure} \n{cal} \n{squirrels} Белки \n{fats} Жиры \n{carb} Углеводы\n")
 
             print(info)
             file.write(info)
-        
+
     os.system(f"start {filename}")
