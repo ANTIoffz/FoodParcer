@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
+VERSION = '1.2'
+print(f'Версия {VERSION}')
+
 url = "http://health-diet.ru/table_calorie/?utm_source=leftMenu&utm_medium=table_calorie    "
 
 headers = {
@@ -57,7 +60,7 @@ while True:
                 fats = table_cell[3].text.strip()
                 carb = table_cell[4].text.strip()
                 structure = item.find("a").get("href")
-                
+
             except Exception as exp:
                 print(f"error \n{exp}")
 
